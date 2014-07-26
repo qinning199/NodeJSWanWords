@@ -1,0 +1,61 @@
+<%- include header %>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <div id="idcontent">
+            <h4>剩余单词数：<%= max %></h4>
+            <%if(word){%>
+            <h2>单词：<%= word.word.trim() %></h2>
+            <h2>音标：<%= word.phonetic %></h2>
+            <h2>含义：<%= word.mean %></h2>
+            <%}%>
+        </div>
+
+        <div class="next">
+            <div class="button-wrap button-download">
+                <a id="idnext" class="btn button button-circle button-flat button-flat-primary glow" role="button" href="javascript:void(0)">
+                    <i class="icon-arrow-right icon-large"></i></a>
+            </div>
+        </div>
+        <div class="easy">
+            <span id="ideasy" class="button-wrap"><a href="javascript:void(0)" class="button button-pill">我会了</a></span>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+    $("#idnext").click(function(){
+    htmlobj=$.ajax({url:"/word?t=<%=type%>",async:false});
+        var json=$.parseJSON(htmlobj.responseText);
+        $("#idcontent").html(
+        "<h4>剩余单词数："+json["max"]+"</h4>"+
+        "<h2>单词："+json["word"]+"</h2>"+
+        "<h2>音标："+json["phonetic"]+"</h2>"+
+        "<h2>含义："+json["mean"]+"</h2>"
+        );
+    });
+});
+
+$(document).ready(function(){
+    $("#ideasy").click(function(){
+        var id = "-1"
+        <%if(word){%>
+            id = "<%=word.wordId%>";
+        <%}%>
+        var url = "/skip?t=<%=type%>&id="+id;
+        htmlobj=$.ajax({url:url,async:false});
+        var json=$.parseJSON(htmlobj.responseText);
+        $("#idcontent").html(
+                        "<h4>剩余单词数："+json["max"]+"</h4>"+
+                        "<h2>单词："+json["word"]+"</h2>"+
+                        "<h2>音标："+json["phonetic"]+"</h2>"+
+                        "<h2>含义："+json["mean"]+"</h2>"
+        );
+    });
+});
+
+</script>
+<%- include footer %>

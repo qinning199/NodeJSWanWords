@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="豌豆随心记,豌小豆,背单词"/>
+    <meta name="description" content="豌豆随心记,随时随地背单词">
+    <meta name="author" content="qinning199">
+    <link rel="icon" href="images/favicon.ico">
+
+    <title><%=title%></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="stylesheets/jumbotron.css" rel="stylesheet">
+    <link href="stylesheets/buttons.css" rel="stylesheet">
+    <link href="http://www.bootcss.com/p/buttons/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css">
+
+    <script type="text/javascript" src="javascripts/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="/"><img src="images/icon.png" class="icon" /><%=title%></a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <% if(type==1){%><li class="active"><% }else{%><li ><% }%>
+                <a href="/">四级</a></li>
+                <% if(type==2){%><li class="active"><% }else{%><li ><% }%>
+                    <a href="/six">六级</a></li>
+                <% if(type==3){%><li class="active"><% }else{%><li ><% }%>
+                    <a href="/gre">GRE</a></li>
+                <% if(type==4){%><li class="active"><% }else{%><li ><% }%>
+                    <a href="/tuo">托福</a></li>
+            </ul>
+            <form class="navbar-form navbar-right" role="form">
+                <div class="form-group">
+                    <input type="text" placeholder="Email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Sign in</button>
+            </form>
+        </div><!--/.navbar-collapse -->
+    </div>
+</div>
